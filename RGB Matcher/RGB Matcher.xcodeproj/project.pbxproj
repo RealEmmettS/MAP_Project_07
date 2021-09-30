@@ -13,6 +13,7 @@
 		D14476762705FF7900257447 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D14476742705FF7900257447 /* Main.storyboard */; };
 		D14476782705FF7A00257447 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D14476772705FF7A00257447 /* Assets.xcassets */; };
 		D144767B2705FF7A00257447 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D14476792705FF7A00257447 /* LaunchScreen.storyboard */; };
+		D14476852706074500257447 /* ExtraUICode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14476842706074500257447 /* ExtraUICode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,9 @@
 		D14476772705FF7A00257447 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D144767A2705FF7A00257447 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D144767C2705FF7A00257447 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1447682270600DD00257447 /* RGB_Matcher FAQ.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RGB_Matcher FAQ.docx"; sourceTree = "<group>"; };
+		D1447683270600DD00257447 /* RGB_Matcher.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = RGB_Matcher.docx; sourceTree = "<group>"; };
+		D14476842706074500257447 /* ExtraUICode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraUICode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,9 @@
 				D144766E2705FF7900257447 /* AppDelegate.swift */,
 				D14476702705FF7900257447 /* SceneDelegate.swift */,
 				D14476722705FF7900257447 /* ViewController.swift */,
+				D14476842706074500257447 /* ExtraUICode.swift */,
+				D1447682270600DD00257447 /* RGB_Matcher FAQ.docx */,
+				D1447683270600DD00257447 /* RGB_Matcher.docx */,
 				D14476742705FF7900257447 /* Main.storyboard */,
 				D14476772705FF7A00257447 /* Assets.xcassets */,
 				D14476792705FF7A00257447 /* LaunchScreen.storyboard */,
@@ -139,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D14476732705FF7900257447 /* ViewController.swift in Sources */,
+				D14476852706074500257447 /* ExtraUICode.swift in Sources */,
 				D144766F2705FF7900257447 /* AppDelegate.swift in Sources */,
 				D14476712705FF7900257447 /* SceneDelegate.swift in Sources */,
 			);
@@ -306,7 +314,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -334,7 +342,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
