@@ -92,21 +92,21 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="65" translatesAutoresizingMaskIntoConstraints="NO" id="vfA-ks-Soc">
                                 <rect key="frame" x="14" y="354" width="386" height="220"/>
                                 <subviews>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="256" translatesAutoresizingMaskIntoConstraints="NO" id="DJq-2w-njO">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="DJq-2w-njO">
                                         <rect key="frame" x="-2" y="0.0" width="390" height="31"/>
                                         <color key="tintColor" red="0.92156862750000001" green="0.23137254900000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="redSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="iNU-ht-KHF"/>
                                         </connections>
                                     </slider>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="256" translatesAutoresizingMaskIntoConstraints="NO" id="MYH-1K-zBv">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="MYH-1K-zBv">
                                         <rect key="frame" x="-2" y="95" width="390" height="31"/>
                                         <color key="tintColor" systemColor="systemGreenColor"/>
                                         <connections>
                                             <action selector="greenSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="WMC-6S-ysK"/>
                                         </connections>
                                     </slider>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="256" translatesAutoresizingMaskIntoConstraints="NO" id="ZbG-HV-tz6">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZbG-HV-tz6">
                                         <rect key="frame" x="-2" y="190" width="390" height="31"/>
                                         <connections>
                                             <action selector="blueSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="Lya-tt-kQl"/>
@@ -131,8 +131,10 @@
                         <outlet property="blueSliderOutlet" destination="ZbG-HV-tz6" id="9BV-PE-w9Y"/>
                         <outlet property="greenSliderOutlet" destination="MYH-1K-zBv" id="qHd-b0-a7D"/>
                         <outlet property="matchColor" destination="qWh-EH-jHt" id="ZAN-F9-lta"/>
+                        <outlet property="matchColorLabel" destination="P99-kp-BOC" id="kJ9-0Z-AHd"/>
                         <outlet property="redSliderOutlet" destination="DJq-2w-njO" id="n6a-hE-0tI"/>
                         <outlet property="userColor" destination="duV-j0-92V" id="0X2-uY-jre"/>
+                        <outlet property="userColorLabel" destination="rsi-2z-Gi7" id="r8d-H8-v45"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
