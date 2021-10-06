@@ -8,14 +8,51 @@
 import Foundation
 import UIKit
 
+///'words'' in simply an alias for the 'String' type. Use the key 'words' wherever you would normally type 'String'
+typealias words = String
+///'number' in simply an alias for the 'Int' type. Use the key 'number' wherever you would normally type 'Int'
+typealias number = Int
+///'decimal' in simply an alias for the 'Double' type. Use the key 'decimal' wherever you would normally type 'Double'
+typealias decimal = Double
+
+
+/// Color data type. This data type has three attributes and one action.
+struct RGB_Color {
+    ///Red value on the RGB 256 scale
+    var r:CGFloat = 0
+    ///Green value on the RGB 256 scale
+    var g:CGFloat = 0
+    ///Blue value on the RGB 256 scale
+    var b:CGFloat = 0
+    
+    ///Compiles the RGB values of the object
+    ///- Returns: UIColor from the compiled RGB values
+    func getColor() -> UIColor{
+        return UIColor(red: r, green: g, blue: b, alpha: 1)
+    }
+    
+    ///Compiles the RGB values of the object
+    ///- Returns: UIColor from the compiled RGB values
+    func getRGBColor() -> String{
+        return "\(String(format: "%.02f", r)), \(String(format: "%.02f", g)), \(String(format: "%.02f", b))"
+    }
+    
+    ///Compiles the RGB values of the object
+    ///- Returns: HEX string from the compiled RGB values
+    func getHexColor() -> String {
+        return UIColor(red: r, green: g, blue: b, alpha: 1).toHexString()
+    }
+}
+
+
 
 //Returns a random UIColor
-func randomColor() -> UIColor{
-    let r1 = Float.random(in: 0..<1)
-    let r2 = Float.random(in: 0..<1)
-    let r3 = Float.random(in: 0..<1)
+func randomColor() -> RGB_Color{
+    let r = Float.random(in: 0..<1)
+    let g = Float.random(in: 0..<1)
+    let b = Float.random(in: 0..<1)
 
-    let randomColor = UIColor(red: CGFloat(r1), green: CGFloat(r2), blue: CGFloat(r3), alpha: 1)
+    let randomColor = RGB_Color(r: CGFloat(r), g: CGFloat(g), b: CGFloat(b))
     
     return randomColor
 }

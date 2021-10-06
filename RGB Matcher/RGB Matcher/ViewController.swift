@@ -23,55 +23,35 @@ class ViewController: UIViewController {
     @IBOutlet weak var greenSliderOutlet: UISlider!
     @IBOutlet weak var blueSliderOutlet: UISlider!
     
-    var color = usersColor(r: 0, g: 0, b: 0)
-    
-    struct usersColor {
-        var r:CGFloat = 0{
-            didSet{
-                print("R: \(r)")
-            }
-        }
-        var g:CGFloat = 0{
-            didSet{
-                print("G: \(g)")
-            }
-        }
-        var b:CGFloat = 0{
-            didSet{
-                print("B: \(b)")
-            }
-        }
-        
-        func getColor() -> UIColor{
-            return UIColor(red: r, green: g, blue: b, alpha: 1)
-        }
-    }
-    
+    var color = RGB_Color(r: 0, g: 0, b: 0)
     let colorToMatch = randomColor()
     
     
     
-    //MARK: viewDidLoad()
+    //MARK: -viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
         userColor.backgroundColor = color.getColor()
-        matchColor.backgroundColor = colorToMatch
+        matchColor.backgroundColor = colorToMatch.getColor()
         
         userColor.layer.masksToBounds = true
         matchColor.layer.masksToBounds = true
         
         userColorLabel.text = "..."
-        matchColorLabel.text = colorToMatch.toHexString()
+        matchColorLabel.text = colorToMatch.getHexColor()
 
         gameTimer()
-        runTimer(20, repeats: false)
+        runTimer(30, repeats: false)
     }
     
     
     
-    //MARK: Slider Functions
+    
+    
+    
+    //MARK: -Slider Functions
     
     //Ask Mr. Bunn about slider "NSInvalidArgumentException" error that triggers when slider is moved by the user
     @IBAction func redSlider(_ sender: UISlider!) {
@@ -151,23 +131,50 @@ class ViewController: UIViewController {
                     self.greenSliderOutlet.isEnabled = false
                     self.blueSliderOutlet.isEnabled = false
                     
+                    self.showAlert(title: "Score", message: self.displayScoreAsString(), continueTitle: "Good Game", addCancelButton: false, cancelTitle: nil)
+                    
                     timer.invalidate()
                 }
 
             }//End of Timer
     }//End of restartTimer
     
+    //MARK: -showAlert()
+    func showAlert(title: String, message: String, continueTitle: String, addCancelButton cancel: Bool,  cancelTitle: String?){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: continueTitle, style: .default, handler: nil))
+        if cancel {
+            alert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: nil))
+        }
+        
+        self.present(alert, animated: true)
+    }
+    
+    
+    
     
     //MARK: Find Score
     func displayScoreAsString() -> String{
-        let rDiff = color.r
-        let gDiff = color.g
-        let bDiff = color.b
+        let rDiff = colorToMatch.r - color.r
+        let gDiff = colorToMatch.g - color.g
+        let bDiff = colorToMatch.b - color.b
         
         let diff = sqrt(pow(rDiff, 2) + pow(gDiff, 2) + pow(bDiff, 2))
-        let finalScore:Int = ((1-diff)*100)
-                
+        let score:number = Int(((1-diff)*100))
         
+        
+        
+        let scorePercent:number = abs(score) //absolute value of score
+        
+//        let displayScore = """
+//                    Raw Score: \(score)
+//                    Accuracy: \(scorePercent)%
+//        """
+                
+        let displayScore = "Accuracy: \(scorePercent)%\n\nYour RGB: \(color.getRGBColor())\nMatch RGB: \(colorToMatch.getRGBColor())"
+        
+        return displayScore
     }
     
 }
