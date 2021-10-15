@@ -58,13 +58,28 @@ class ViewController: UIViewController {
     }
     
     
-    
     //MARK: -viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //The line below is for testing. DO NOT UNCOMMENT
+        //savedValues.set(false, forKey: "playedAgain")
         
-        startGame()
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        if !playedBefore{
+            print("\n\nNot played before. Showing initial alert...")
+            
+            showAlert(title: "Welcome", message: "\nWelcome to RGB Matcher! The goal of this game is to match your color to the goal color using three RGB sliders (red, green, and blue respectivly).\n\nGood Luck!\n\n", continueText: "Start Game", continueStartsGame: true, allowCancel: false)
+            
+            savedValues.set(true, forKey: "playedAgain")
+
+        }else{
+            startGame()
+        }
     }
     
     
@@ -131,7 +146,7 @@ class ViewController: UIViewController {
                     self.greenSliderOutlet.isEnabled = false
                     self.blueSliderOutlet.isEnabled = false
                     
-                    self.showAlert(title: "Score", message: self.displayScoreAsString(), continueTitle: "New Game", addCancelButton: false, cancelTitle: nil)
+                    self.showAlert(title: "Score", message: self.displayScoreAsString(), continueText: "New Game", continueStartsGame: true, allowCancel: false)
                     
                     timer.invalidate()
                 }
@@ -140,18 +155,28 @@ class ViewController: UIViewController {
     }//End of restartTimer
     
     //MARK: -showAlert()
-    func showAlert(title: String, message: String, continueTitle: String, addCancelButton cancel: Bool,  cancelTitle: String?){
+    func showAlert(title: String, message: String, continueText: String, continueStartsGame continueStarts:Bool, allowCancel cancel: Bool,  cancelText: String = "Cancel"){
+        
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
                 
-        alert.addAction(UIAlertAction(title: continueTitle, style: .default, handler: {(action:UIAlertAction!) in
-            self.startGame()
+        print("Adding alert action...")
+        alert.addAction(UIAlertAction(title: continueText, style: .default, handler: {action in
+            
+            if !continueStarts{
+                print("\n\nContinue does not start game\n\n")
+            }else{
+                print("\n\nContinue starts game\n\n")
+                self.startGame()
+            }
+            
             }))
         
         if cancel {
-            alert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: cancelText, style: .cancel, handler: nil))
         }
         
-        self.present(alert, animated: true)
+        print("Running alert...\n\n")
+        self.present(alert, animated: true, completion: nil)
     }
     
     

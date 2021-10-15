@@ -15,6 +15,10 @@ typealias number = Int
 ///'decimal' in simply an alias for the 'Double' type. Use the key 'decimal' wherever you would normally type 'Double'
 typealias decimal = Double
 
+let savedValues = UserDefaults.standard
+let playedBefore = savedValues.bool(forKey: "playedAgain")
+
+
 
 /// Color data type. This data type has three attributes and one action.
 struct RGB_Color {
