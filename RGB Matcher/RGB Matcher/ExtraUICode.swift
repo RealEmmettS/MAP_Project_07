@@ -34,7 +34,9 @@ struct RGB_Color {
     ///Compiles the RGB values of the object
     ///- Returns: UIColor from the compiled RGB values
     func getRGBColor() -> String{
-        return "\(String(format: "%.02f", r)), \(String(format: "%.02f", g)), \(String(format: "%.02f", b))"
+//        return "\(String(format: "%.01f", r*256)), \(String(format: "%.01f", g*256)), \(String(format: "%.01f", b*256))"
+        
+        return "\(Int(r*256)), \(Int(g*256)), \(Int(b*256))"
     }
     
     ///Compiles the RGB values of the object

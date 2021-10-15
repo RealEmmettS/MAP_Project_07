@@ -46,7 +46,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Color" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsi-2z-Gi7">
                                                 <rect key="frame" x="0.0" y="125" width="155.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -78,7 +78,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Match Color" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P99-kp-BOC">
                                                 <rect key="frame" x="0.0" y="125" width="155.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -96,6 +96,7 @@
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="DJq-2w-njO">
                                         <rect key="frame" x="-2" y="0.0" width="390" height="31"/>
                                         <color key="tintColor" red="0.92156862750000001" green="0.23137254900000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="thumbTintColor" red="0.92549019610000005" green="0.23137254900000001" blue="0.23137254900000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="redSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="iNU-ht-KHF"/>
                                         </connections>
@@ -103,6 +104,7 @@
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="MYH-1K-zBv">
                                         <rect key="frame" x="-2" y="95" width="390" height="31"/>
                                         <color key="tintColor" systemColor="systemGreenColor"/>
+                                        <color key="thumbTintColor" systemColor="systemGreenColor"/>
                                         <connections>
                                             <action selector="greenSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="WMC-6S-ysK"/>
                                         </connections>
@@ -110,23 +112,36 @@
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZbG-HV-tz6">
                                         <rect key="frame" x="-2" y="190" width="390" height="31"/>
                                         <color key="tintColor" systemColor="systemBlueColor"/>
+                                        <color key="thumbTintColor" systemColor="systemBlueColor"/>
                                         <connections>
                                             <action selector="blueSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="Lya-tt-kQl"/>
                                         </connections>
                                     </slider>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V05-fX-4T5">
+                                <rect key="frame" x="174" y="267" width="66" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="yBb-h1-krC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="55"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vfA-ks-Soc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0uU-UG-5jo"/>
                             <constraint firstItem="vfA-ks-Soc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="354" id="3e7-2q-5Qc"/>
+                            <constraint firstItem="vfA-ks-Soc" firstAttribute="top" secondItem="V05-fX-4T5" secondAttribute="bottom" constant="21" id="CYq-6e-9A8"/>
                             <constraint firstItem="6ZR-MC-ugE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="JF8-V6-UeA"/>
+                            <constraint firstItem="V05-fX-4T5" firstAttribute="top" secondItem="6ZR-MC-ugE" secondAttribute="bottom" constant="8" symbolic="YES" id="eLn-L0-Ry8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6ZR-MC-ugE" secondAttribute="trailing" constant="20" id="eZX-yR-hMf"/>
                             <constraint firstItem="6ZR-MC-ugE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="33" id="kbP-j3-Cyb"/>
                             <constraint firstItem="vfA-ks-Soc" firstAttribute="top" secondItem="6ZR-MC-ugE" secondAttribute="bottom" constant="95" id="qEn-cP-NJL"/>
                             <constraint firstItem="vfA-ks-Soc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="14" id="rJx-Oq-dlU"/>
+                            <constraint firstItem="V05-fX-4T5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="v0f-X2-kGz"/>
                         </constraints>
                     </view>
                     <connections>
@@ -135,6 +150,7 @@
                         <outlet property="matchColor" destination="qWh-EH-jHt" id="ZAN-F9-lta"/>
                         <outlet property="matchColorLabel" destination="P99-kp-BOC" id="kJ9-0Z-AHd"/>
                         <outlet property="redSliderOutlet" destination="DJq-2w-njO" id="n6a-hE-0tI"/>
+                        <outlet property="timeLabel" destination="V05-fX-4T5" id="9lU-Lc-XJk"/>
                         <outlet property="userColor" destination="duV-j0-92V" id="0X2-uY-jre"/>
                         <outlet property="userColorLabel" destination="rsi-2z-Gi7" id="r8d-H8-v45"/>
                     </connections>

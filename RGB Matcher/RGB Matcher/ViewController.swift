@@ -9,29 +9,39 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    //Color Views
     @IBOutlet weak var userColor: UILabel!
     @IBOutlet weak var matchColor: UILabel!
     
-    
+    //Color HEX Lables
     @IBOutlet weak var userColorLabel: UILabel!
     var userColorHex:String = ""
     @IBOutlet weak var matchColorLabel: UILabel!
     
+    //Countdown Label
+    @IBOutlet weak var timeLabel: UILabel!
     
-    
+    //RGB Sliders
     @IBOutlet weak var redSliderOutlet: UISlider!
     @IBOutlet weak var greenSliderOutlet: UISlider!
     @IBOutlet weak var blueSliderOutlet: UISlider!
     
     var color = RGB_Color(r: 0, g: 0, b: 0)
-    let colorToMatch = randomColor()
+    var colorToMatch = randomColor()
+    var totalTimeInGame = 15
     
-    
-    
-    //MARK: -viewDidLoad()
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func startGame(){
         
+        color = RGB_Color(r: 0, g: 0, b: 0)
+        colorToMatch = randomColor()
+        
+        redSliderOutlet.value = 0
+        greenSliderOutlet.value = 0
+        blueSliderOutlet.value = 0
+        
+        redSliderOutlet.isEnabled = true
+        greenSliderOutlet.isEnabled = true
+        blueSliderOutlet.isEnabled = true
         
         userColor.backgroundColor = color.getColor()
         matchColor.backgroundColor = colorToMatch.getColor()
@@ -41,9 +51,20 @@ class ViewController: UIViewController {
         
         userColorLabel.text = "..."
         matchColorLabel.text = colorToMatch.getHexColor()
+        
+        timeLabel.text = "\(totalTimeInGame)"
 
-        gameTimer()
-        runTimer(30, repeats: false)
+        gameTimer(totalTimeInGame)
+    }
+    
+    
+    
+    //MARK: -viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        startGame()
     }
     
     
@@ -89,28 +110,6 @@ class ViewController: UIViewController {
     
     
     //MARK: Timer
-    func runTimer(_ totalTime: Int = 10, repeats: Bool = true){
-                    
-            print("Timer Started")
-            var timeLeft = totalTime
-            
-            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: repeats) { timer in
-            
-                //This code runs every second
-                //print("Time Left: \(timeLeft)")
-                timeLeft -= 1
-                
-                if timeLeft == 0 {
-                    //This code runs when the timer is up
-                    let r = self.color.r
-                    let g = self.color.g
-                    let b = self.color.b
-                    print("R: \(r)\nG: \(g)\nB: \(b)")
-                    timer.invalidate()
-                }
-
-            }//End of Timer
-    }//End of restartTimer
     
     func gameTimer(_ totalTime: Int = 10, repeats: Bool = true){
                     
@@ -122,6 +121,7 @@ class ViewController: UIViewController {
                 //This code runs every second
                 //print("Time Left: \(timeLeft)")
                 timeLeft -= 1
+                self.timeLabel.text = "\(timeLeft)"
                 
                 if timeLeft == 0 {
                     //This code runs when the timer is up
@@ -131,7 +131,7 @@ class ViewController: UIViewController {
                     self.greenSliderOutlet.isEnabled = false
                     self.blueSliderOutlet.isEnabled = false
                     
-                    self.showAlert(title: "Score", message: self.displayScoreAsString(), continueTitle: "Good Game", addCancelButton: false, cancelTitle: nil)
+                    self.showAlert(title: "Score", message: self.displayScoreAsString(), continueTitle: "New Game", addCancelButton: false, cancelTitle: nil)
                     
                     timer.invalidate()
                 }
@@ -142,8 +142,11 @@ class ViewController: UIViewController {
     //MARK: -showAlert()
     func showAlert(title: String, message: String, continueTitle: String, addCancelButton cancel: Bool,  cancelTitle: String?){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                
+        alert.addAction(UIAlertAction(title: continueTitle, style: .default, handler: {(action:UIAlertAction!) in
+            self.startGame()
+            }))
         
-        alert.addAction(UIAlertAction(title: continueTitle, style: .default, handler: nil))
         if cancel {
             alert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: nil))
         }
@@ -172,7 +175,7 @@ class ViewController: UIViewController {
 //                    Accuracy: \(scorePercent)%
 //        """
                 
-        let displayScore = "Accuracy: \(scorePercent)%\n\nYour RGB: \(color.getRGBColor())\nMatch RGB: \(colorToMatch.getRGBColor())"
+        let displayScore = "Accuracy: \(scorePercent)%\n\nYour RGB: \(color.getRGBColor())\nGoal RGB: \(colorToMatch.getRGBColor())"
         
         return displayScore
     }
