@@ -29,6 +29,13 @@ class ViewController: UIViewController {
     var color = RGB_Color(r: 0, g: 0, b: 0)
     var colorToMatch = randomColor()
     var totalTimeInGame = 15
+    var hasStarted = false{
+        didSet{
+            if hasStarted{
+                gameTimer(totalTimeInGame)
+            }
+        }
+    }
     
     func startGame(){
         
@@ -53,8 +60,6 @@ class ViewController: UIViewController {
         matchColorLabel.text = colorToMatch.getHexColor()
         
         timeLabel.text = "\(totalTimeInGame)"
-
-        gameTimer(totalTimeInGame)
     }
     
     
@@ -92,6 +97,10 @@ class ViewController: UIViewController {
     //Ask Mr. Bunn about slider "NSInvalidArgumentException" error that triggers when slider is moved by the user
     @IBAction func redSlider(_ sender: UISlider!) {
         let currentValue:CGFloat = CGFloat(redSliderOutlet.value)
+        
+        if hasStarted == false{
+            hasStarted = true
+        }
 
         //print("R: \(currentValue)")
 
@@ -102,6 +111,10 @@ class ViewController: UIViewController {
     
     @IBAction func greenSlider(_ sender: UISlider!) {
         let currentValue:CGFloat = CGFloat(greenSliderOutlet.value)
+        
+        if hasStarted == false{
+            hasStarted = true
+        }
 
         //print("G: \(currentValue)")
 
@@ -112,6 +125,10 @@ class ViewController: UIViewController {
     
     @IBAction func blueSlider(_ sender: UISlider!) {
         let currentValue:CGFloat = CGFloat(blueSliderOutlet.value)
+        
+        if hasStarted == false{
+            hasStarted = true
+        }
 
         //print("B: \(currentValue)")
 
@@ -145,6 +162,7 @@ class ViewController: UIViewController {
                     self.redSliderOutlet.isEnabled = false
                     self.greenSliderOutlet.isEnabled = false
                     self.blueSliderOutlet.isEnabled = false
+                    self.hasStarted = false
                     
                     self.showAlert(title: "Score", message: self.displayScoreAsString(), continueText: "New Game", continueStartsGame: true, allowCancel: false)
                     
